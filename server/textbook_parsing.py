@@ -65,3 +65,5 @@ def parse_pdf(pdf_bytes):
             chunk = create_chunk(chunk)
             current_chunk_order += 1
 
+def get_chunk_text():
+    pass

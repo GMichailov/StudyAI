@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey, DateTime
 from sqlalchemy.orm import relationship, declarative_base
 from datetime import datetime
+from dataclasses import dataclass
 
 Base = declarative_base()
 
@@ -47,4 +48,8 @@ class Image(Base):
     path = Column(String, nullable=False)
 
     chunk = relationship("Chunk", back_populates="images")
+
+@dataclass
+class UserBooks:
+    books: dict[Book, list[Chapter]]
 

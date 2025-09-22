@@ -87,7 +87,7 @@ async def create_chapter(chapter: Chapter):
 
 async def get_all_chapters_bookid(book_id):
     with get_db() as db:
-        return db.query(Chapter).filter(book_id=book_id).all()
+        return db.query(Chapter).filter(book_id=book_id).order_by(id).all()
 
 async def get_chapter(chapter_id):
     with get_db() as db:
