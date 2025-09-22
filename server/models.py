@@ -18,10 +18,9 @@ class Chapter(Base):
     id = Column(Integer, primary_key=True, index=True)
     book_id = Column(Integer, ForeignKey("books.id"))
     title = Column(String, nullable=False)
-    order = Column(Integer, nullable=False)
-    raw_text = Column(Text, nullable=False)
+    order = Column(Integer, nullable=True)
     start_page = Column(String, nullable=False)
-    end_page = Column(String, nullable=False)
+    #end_page = Column(String, nullable=False)
 
     book = relationship("Book", back_populates="chapters")
     chunks = relationship("Chunk", back_populates="chapter")
@@ -31,10 +30,11 @@ class Chunk(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     chapter_id = Column(Integer, ForeignKey("chapters.id"))
-    page_number = Column(String, nullable=False)
-    text = Column(String, primary_key=True, index=True)
+    order = Column(Integer, nullable=False)
+    title = Column(String, nullable=True)
+    text = Column(Text, primary_key=True, index=True)
     start_page = Column(String, nullable=False)
-    end_page = Column(String, nullable=False)
+    #end_page = Column(String, nullable=False)
 
     chapter = relationship("Chapter", back_populates="chunks")
     images = relationship("Image", back_populates="chunk")

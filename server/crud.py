@@ -115,7 +115,7 @@ async def delete_chapter_id(chapter_id):
 
 # Chunks
 
-async def create_chapter(chunk: Chunk):
+async def create_chunk(chunk: Chunk):
     with get_db() as db:
         try:
             db.add(chunk)
@@ -130,6 +130,8 @@ async def create_chapter(chunk: Chunk):
 async def get_all_chunks_chapter(chapter_id):
     with get_db() as db:
         return db.query(Chunk).filter(chapter_id=chapter_id).all()
+
+async def get_chunk(): pass
 
 async def delete_chunk_id(chunk_id):
     with get_db() as db:
